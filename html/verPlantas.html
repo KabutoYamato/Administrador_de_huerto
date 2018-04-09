@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link href="../css/main.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <nav style="height: 10%;">
+        <div class="nav-wrapper green darken-3" style="height: 100%;">
+            <a href="#" class="brand-logo" style="padding-left: 30px">Huerto</a>
+        </div>
+    </nav>
+    <div style="padding-left: 25px"><h4 id="titulo"></h4></div>
+    <div id="PrincipalContainer" style="height: 100%;">
+        <div id="tarjetas" class="row" style="height: 100%;">
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a id="nueva" class="btn-floating btn-large waves-effect waves-light green darken-3"><i class="material-icons">add</i></a>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="../js/firebaseInit.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/materialize.min.js"></script>
+    <script src="../js/tarjeta.js"></script>
+    <script>
+
+        $(document).ready(function() {  
+            var database = firebase.database().ref();
+            var vars = getUrlVars();
+            var id = vars["id"];
+            $("#titulo").text(vars['name'].replace(/%20/g," "));
+            var plantas = database.child("plantasXzona/"+id);
+            plantas.on('value', function(snapshot){
+                var plants = snapshot.val();
+                for(plant in plants){
+                    database.child("informacion_plantas/"+plant).on('value',
+                    function(planta){
+                        var html = crearTarjetaPlanta(plant,planta.val()['nombre'],planta.val()['descripcion'],planta.val()['url']);
+                        $("#tarjetas").append(html);
+                    });
+                }
+            });
+            $("#nueva").attr("href", "crearPlanta.html?id="+id);
+        });
+        
+
+        function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+    </script>
+</body>
+</html>
