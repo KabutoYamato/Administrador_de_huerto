@@ -18,11 +18,16 @@ html, body
 }
 
 .image-background {
-  
-    height: 100%;
-    width: 100%;
+    max-width: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
-  }
+}
+
+.tarjeta {
+    height: auto;
+}
+
+.text-shadow {
+    text-shadow: 0 0 2px #000;
+}

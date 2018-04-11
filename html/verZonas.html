@@ -27,7 +27,7 @@
         <script src="../js/tarjeta.js"></script>
         <script>
             $( document ).ready(function() {
-                var database = firebase.database().ref();
+                var database = firebase.database().ref();            
                 var zonas = database.child("informacion_zonas");
                 zonas.on('value', function(snapshot){
                     $("#tarjetas").empty();

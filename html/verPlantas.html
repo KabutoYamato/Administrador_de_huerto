@@ -9,21 +9,23 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
       <link href="../css/main.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Plantas</title>
 </head>
 <body>
     <nav style="height: 10%;">
         <div class="nav-wrapper green darken-3" style="height: 100%;">
-            <a href="#" class="brand-logo" style="padding-left: 30px">Huerto</a>
+            <a href="#" class="brand-logo" style="padding-left: 30px">Plantas</a>
         </div>
     </nav>
-    <div style="padding-left: 25px"><h4 id="titulo"></h4></div>
+    <div style="padding-left: 25px">
+        <h4 id="titulo">Tus Plantas</h4>
+    </div>
     <div id="PrincipalContainer" style="height: 100%;">
         <div id="tarjetas" class="row" style="height: 100%;">
         </div>
     </div>
     <div class="fixed-action-btn">
-        <a id="nueva" class="btn-floating btn-large waves-effect waves-light green darken-3"><i class="material-icons">add</i></a>
+        <a id="nueva" class="btn-floating btn-large waves-effect waves-light green darken-3" href="crearPlanta.html"><i class="material-icons">add</i></a>
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="../js/firebaseInit.js"></script>
@@ -31,9 +33,28 @@
     <script src="../js/materialize.min.js"></script>
     <script src="../js/tarjeta.js"></script>
     <script>
-
-        $(document).ready(function() {  
-            var database = firebase.database().ref();
+        $(document).ready(function() {
+            var database = firebase.database().ref();            
+            var infoPlantas = database.child("informacion_plantas");
+            infoPlantas.on('value', function(snapshot){
+                $("#tarjetas").empty();
+                var plantas = snapshot.val();
+                for(planta in plantas){
+                    var id = planta;
+                    var name = plantas[planta]["nombre"];
+                    var cientific = plantas[planta]["cientifico"];
+                    var description = plantas[planta]["descripcion"];
+                    var taxonomia = plantas[planta]["taxonomia"];
+                    var aplicacion = plantas[planta]["aplicacion"];
+                    var qr = plantas[planta]["qr"];
+                    var url = plantas[planta]["url"];
+                    var html = crearTarjetaPlanta(id,name,description,url);                
+                    $("#tarjetas").append(html);
+                }    
+            });
+        });
+            
+        /*
             var vars = getUrlVars();
             var id = vars["id"];
             $("#titulo").text(vars['name'].replace(/%20/g," "));
@@ -64,6 +85,7 @@
             }
             return vars;
         }
+    */
     </script>
 </body>
 </html>
