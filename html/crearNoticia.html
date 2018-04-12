@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="../css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
-    <title>Aplicacion Huerto</title>
+    <title>Nueva Noticia</title>
 </head>
 <body>
     <nav style="height: 10%;">
         <div class="nav-wrapper green darken-3" style="height: 100%;">
-            <a href="verPlantas.html" class="brand-logo" style="padding-left: 30px"><img class="logo" src="../img/Logo.png" alt=""></a>
+            <a href="verNoticias.html" class="brand-logo" style="padding-left: 30px"><img class="logo" src="../img/Logo.png" alt=""></a>
         </div>
     </nav>
-    <div style="padding-left: 25px"><h4>Nueva Planta</h4></div>
+    <div style="padding-left: 25px"><h4>Nueva Noticia</h4></div>
     <div class="row nomargin" style="height: 80%">
         <div class="col m4 fullheight" style="display: flex; align-items: center; justify-content: center; 
         flex-direction: column">
@@ -41,31 +41,18 @@
         <div class="col m8 fullheight"  style="display: flex; align-items:center;  justify-content: center; flex-direction: column">
                 <div class="input-field col m8 nomargin" style="margin-top: 2% !important;">
                     <input id="nombre" type="text" class="validate">
-                    <label for="nombre">Nombre</label>
-                </div>
-                <div class="input-field col m8 nomargin" style="margin-top: 2% !important;">
-                    <input id="cientifico" type="text" class="validate">
-                    <label for="cientifico">Nombre Cientifico</label>
+                    <label for="nombre">Título</label>
                 </div>
                 <div class="input-field col m8 nomargin " style="margin-top: 2% !important;">
                     <textarea id="descripcion" class="materialize-textarea"></textarea>
                     <label for="descripcion">Descripcion</label>
                 </div> 
-                <div class="input-field col m8 nomargin" style="margin-top: 2% !important;">
-                    <input id="taxonomia" type="text" class="validate">
-                    <label for="taxonomia">Taxonomia</label>
-                </div>
-                <div class="input-field col m8 nomargin " style="margin-top: 2% !important;">
-                    <textarea id="aplicaciones" class="materialize-textarea"></textarea>
-                    <label for="aplicaciones">Aplicaciones</label>
-                </div> 
-                
         </div>
         <div class="fixed-action-btn">
             <a id="guardar" class="btn-floating btn-large waves-effect waves-light green darken-3 modal-trigger" href="#modal1"><i class="material-icons">save</i></a>
             <div id="modal1" class="modal">
                 <div class="modal-content">
-                    <h4>Subiendo Archivo</h4>
+                    <h4>Publicando Noticia</h4>
                     <div class="progress">
                         <div id="progressed" class="determinate" style="width: 0%"></div>
                     </div>
@@ -85,7 +72,7 @@
     <script src="../js/firebaseInit.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/materialize.min.js"></script>
-    <script src="../js/crearPlanta.js"></script>
+    <script src="../js/crearNoticia.js"></script>
     
 </body>
 </html>

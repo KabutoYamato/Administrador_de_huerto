@@ -28,6 +28,32 @@ html, body
     height: auto;
 }
 
+.card-image {
+    height: 200px;
+}
+
+.card-content {
+    width: 100%;
+    line-height: 1.5rem;
+    
+}
+
+.card-content p {
+    overflow: hidden;
+    max-height: 4.5rem;
+}
+
+.card-content p:after {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+}
+
 .text-shadow {
     text-shadow: 0 0 2px #000;
+}
+
+.logo {
+    height: 50px;
+    margin: 5px 0;
 }

@@ -14,18 +14,21 @@
 <body>
     <nav style="height: 10%;">
         <div class="nav-wrapper green darken-3" style="height: 100%;">
-            <a href="#" class="brand-logo" style="padding-left: 30px">Plantas</a>
+            <a href="#" class="brand-logo" style="padding-left: 30px"><img class="logo" src="../img/Logo.png" alt=""></a>
         </div>
     </nav>
     <div style="padding-left: 25px">
-        <h4 id="titulo">Tus Plantas</h4>
+        <h4 id="titulo">Todas las Plantas</h4>
     </div>
     <div id="PrincipalContainer" style="height: 100%;">
         <div id="tarjetas" class="row" style="height: 100%;">
         </div>
     </div>
     <div class="fixed-action-btn">
-        <a id="nueva" class="btn-floating btn-large waves-effect waves-light green darken-3" href="crearPlanta.html"><i class="material-icons">add</i></a>
+        <a id="nueva" class="btn-floating btn-large waves-effect waves-light  cyan darken-4" href="crearPlanta.html"><i class="material-icons">add</i></a>
+    </div>
+    <div>
+        <h4><a href="verNoticias.html">Ver Noticias</a></h4>
     </div>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="../js/firebaseInit.js"></script>
@@ -54,7 +57,7 @@
             });
         });
             
-        /*
+        function verPlanta (){
             var vars = getUrlVars();
             var id = vars["id"];
             $("#titulo").text(vars['name'].replace(/%20/g," "));
@@ -70,8 +73,7 @@
                 }
             });
             $("#nueva").attr("href", "crearPlanta.html?id="+id);
-        });
-        
+        };
 
         function getUrlVars()
         {
@@ -85,7 +87,7 @@
             }
             return vars;
         }
-    */
+    
     </script>
 </body>
 </html>
